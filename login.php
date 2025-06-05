@@ -1,14 +1,15 @@
 <?php
 session_start();
 
+// Lista użytkowników
 $users = array(
     "okxn" => "okxn123",
-    // Info o autorze itd.
+    "obywatel" => "1234"
 ); 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = $_POST['nvvice'];
-    $password = $_POST['nvvice'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
     if (array_key_exists($username, $users) && $users[$username] === $password) {
         $_SESSION['loggedin'] = true;
@@ -16,8 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         header("Location: dashboard.php");
         exit;
     } else {
-        echo "Invalid auth key.";
+        echo "Niepoprawny login lub hasło.";
     }
 }
 ?>
-
