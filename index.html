@@ -14,64 +14,107 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>demObywatel</title>
     <link rel="stylesheet" href="styles.css">
-<style>
-  .loader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #121212;
-  transition: opacity 0.75s, visibility 0.75s;
-}
+    <style>
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
 
-.loader--hidden {
-  opacity: 0;
-  visibility: hidden;
-}
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #121212;
+            transition: opacity 0.75s, visibility 0.75s;
+            z-index: 9999;
+        }
 
-.loader::after {
-  content: "";
-  width: 75px;
-  height: 75px;
-  border: 15px solid #dddddd;
-  border-top-color: #1e1e1e;
-  border-radius: 50%;
-  animation: loading 0.75s ease infinite;
-}
+        .loader--hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
 
-@keyframes loading {
-  from {
-    transform: rotate(0turn);
-  }
-  to {
-    transform: rotate(1turn);
-  }
-}
-</style>
-  <script>
-    window.addEventListener("load", () => {
-  const loader = document.querySelector(".loader");
+        .loader::after {
+            content: "";
+            width: 75px;
+            height: 75px;
+            border: 15px solid #dddddd;
+            border-top-color: #1e1e1e;
+            border-radius: 50%;
+            animation: loading 0.75s ease infinite;
+        }
 
-  loader.classList.add("loader--hidden");
+        @keyframes loading {
+            from {
+                transform: rotate(0turn);
+            }
+            to {
+                transform: rotate(1turn);
+            }
+        }
 
-  loader.addEventListener("transitionend", () => {
-    document.body.removeChild(loader);
-  });
-});
-</script>
-  </head>
+        .login-container {
+            max-width: 300px;
+            margin: 150px auto;
+            padding: 30px;
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+        }
+
+        .login-container input {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 15px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .login-container button {
+            padding: 10px 20px;
+            width: 100%;
+            font-size: 16px;
+            background-color: #0078d4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-container button:hover {
+            background-color: #005ea6;
+        }
+    </style>
+    <script>
+        window.addEventListener("load", () => {
+            const loader = document.querySelector(".loader");
+            loader.classList.add("loader--hidden");
+
+            loader.addEventListener("transitionend", () => {
+                document.body.removeChild(loader);
+            });
+        });
+    </script>
+</head>
 <body>
     <div class="loader"></div>
-  <div class="login-container">
+    <div class="login-container">
         <h1>demObywatel</h1>
         <form action="login.php" method="POST">
-            <input type="text" id="username" name="username" placeholder="Username" required>
-            <input type="password" id="password" name="password" placeholder="Auth Key" required>
-            <button type="submit">Login</button>
+            <input type="text" id="username" name="username" placeholder="Login" required>
+            <input type="password" id="password" name="password" placeholder="Hasło" required>
+            <button type="submit">Zaloguj się</button>
         </form>
     </div>
 </body>
