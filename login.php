@@ -7,8 +7,8 @@ $users = array(
 ); 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $username = $_POST['nvvice'];
+    $password = $_POST['nvvice'];
 
     if (array_key_exists($username, $users) && $users[$username] === $password) {
         $_SESSION['loggedin'] = true;
